@@ -21,14 +21,23 @@ const CreatePost = ({ addPost }) => {
   };
 
   return (
-    <>
-      <p>Nouveau Post</p>
-      <input type="text" onChange={handleChangeText} value={postText} />
-      <p>Image</p>
-      <input type="img" onChange={handleChangeImg} value={postImg} />
-      <br />
-      {<button onClick={createPostHandler}>Publie</button>}
-    </>
+    <div className="post">
+      <div className="createPost-row">
+        <div>Titre:</div>
+        <input type="text" onChange={handleChangeText} value={postText} />
+      </div>
+      <div className="createPost-row">
+        <div>Image</div>
+        <input type="img" onChange={handleChangeImg} value={postImg} />
+      </div>
+      {postText !== "" ? (
+        <div className="createPost-row">
+          <button onClick={createPostHandler}>Publie</button>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
 

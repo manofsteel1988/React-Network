@@ -5,6 +5,7 @@ import moment from "moment";
 const Post = ({ postData, deletePost }) => {
   const [nblikes, setNbLikes] = useState(postData.likes);
   const [isLiked, setIsLiked] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const likePost = () => {
     const increment = isLiked ? -1 : 1;
@@ -12,29 +13,48 @@ const Post = ({ postData, deletePost }) => {
     setIsLiked(!isLiked);
   };
 
+  const toggleMenu = () => setShowMenu(!showMenu);
+
   return (
-    <>
-      <p>
-        <img src={postData.authorPicture} alt="author_img" />
-        <br />
-        {postData.author}
-        <br />
-        {moment(postData.date).format("HH:mm")}
-        <br />
-        💬{postData.text}
-        <br />
+    <div className="post">
+      <div className="post-header">
+        <div className="post-header_left">
+          <img
+            className="post-profilePic"
+            src={postData.authorPicture}
+            alt="author_img"
+          />
+          <div>
+            <div className="post-author">{postData.author}</div>
+            <div className="post-date">
+              {moment(postData.date).format("HH:mm")}
+            </div>
+          </div>
+        </div>
+        <div className="post-menu" onClick={toggleMenu}>
+          ...
+          <div
+            className={`post-popup ${showMenu ? "" : "hidden"}`}
+            onClick={() => deletePost(postData.id)}
+          >
+            Supprimer
+          </div>
+        </div>
+      </div>
+      <div className="post-text">{postData.text}</div>
+      <div className="post-picture">
         <img src={postData.postPicture} alt="post_img" />
-        <br />
-        {nblikes} likes
-        <br />
-        <button onClick={likePost}>
-          {isLiked ? `Vous aimez ce post` : `J'aime`}
-        </button>
-        <button onClick={() => deletePost(postData.id)}>
-          Supprimer un post
-        </button>
-      </p>
-    </>
+      </div>
+      <div className="post-footer">
+        <span
+          onClick={likePost}
+          className={`post-likes ${isLiked ? "liked" : ""}`}
+        >
+          <span style={{ marginRight: "5px" }}>👍</span>
+          <span>{nblikes}</span>
+        </span>
+      </div>
+    </div>
   );
 };
 

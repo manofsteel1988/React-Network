@@ -1,4 +1,5 @@
 import "./Components/Post";
+import "./App.css";
 import { useState } from "react";
 import Feed from "./Components/Feed";
 import Header from "./Components/Header";
@@ -60,8 +61,10 @@ function App() {
   return (
     <>
       <Header />
-      <CreatePost addPost={addPost} />
-      <Feed posts={posts} deletePost={deletePost} />
+      <div className="container">
+        <CreatePost addPost={addPost} />
+        <Feed posts={posts} deletePost={deletePost} />
+      </div>
     </>
   );
 }
