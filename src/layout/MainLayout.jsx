@@ -7,9 +7,9 @@ const MainLayout = (props) => {
   return (
     <div id="mainlayout">
       <Header />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", height: "100vh" }}>
         <div className="container">{props.children}</div>
-        <div className="sidebar" style={{}}>
+        <div className="sidebar">
           <p>{`Vous etes actuellement ${
             isConnected ? "connecté au" : "déconnecté du"
           } chat`}</p>

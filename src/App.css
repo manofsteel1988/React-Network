@@ -16,7 +16,7 @@ html,
 body,
 #root,
 #mainlayout {
-  height: 100vh;
+  height: auto;
 }
 
 .container {
@@ -182,8 +182,7 @@ nav ul li {
 .sidebar {
   width: 300px;
   padding: 30px;
-  background-color: #eee;
-  height: 100vh;
+  height: auto;
 }
 
 @media (max-width: 800px) {
