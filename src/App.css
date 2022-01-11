@@ -12,9 +12,18 @@ html {
   --main-color: #8b4beb;
 }
 
+html,
+body,
+#root,
+#mainlayout {
+  height: 100vh;
+}
+
 .container {
   max-width: 500px;
   margin: 30px auto;
+  padding: 0 10px;
+  flex: 1;
 }
 
 .post {
@@ -96,6 +105,36 @@ html {
   background-color: var(--main-color);
   color: white;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_left {
+  display: flex;
+  color: white;
+  text-decoration: none;
+}
+
+.header_left svg {
+  height: 75px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+nav ul {
+  display: flex;
+  padding: 0;
+}
+
+nav ul li {
+  list-style: none;
+  margin-left: 2em;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
 }
 
 .createPost-row {
@@ -106,4 +145,75 @@ html {
 
 .createPost-row:last-child {
   margin-bottom: 0;
+}
+
+.createPost-row input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 0px;
+  background-color: #eee;
+  margin-left: 10px;
+}
+
+.createpost-rowinput[type="text"]:focus {
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 0px;
+  padding: 10px;
+  background-color: var(--main-color);
+  cursor: pointer;
+  color: white;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.sidebar {
+  width: 300px;
+  padding: 30px;
+  background-color: #eee;
+  height: 100vh;
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    display: none;
+  }
+}
+@media (min-width: 801px) {
+  .sidebar {
+    display: block;
+  }
+}
+@media (max-width: 575px) {
+  .header h1 {
+    display: none;
+  }
+}
+@media (min-width: 576px) {
+  .header h1 {
+    display: block;
+  }
+}
+
+.update_profil_form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+}
+
+.update_profil_form input[type="submit"] {
+  margin: 50px auto;
 }

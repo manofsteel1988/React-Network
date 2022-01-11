@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 const CreatePost = ({ addPost }) => {
+  const { user } = useContext(UserContext);
   const [postText, setPostText] = useState("");
   const [postImg, setPostImg] = useState("");
 
@@ -23,16 +25,32 @@ const CreatePost = ({ addPost }) => {
   return (
     <div className="post">
       <div className="createPost-row">
-        <div>Titre:</div>
-        <input type="text" onChange={handleChangeText} value={postText} />
+        <img
+          className="post-profilePic"
+          src={user.authorPicture}
+          alt="profil_picture"
+        />
+        <input
+          type="text"
+          onChange={handleChangeText}
+          value={postText}
+          placeholder="quoi de neuf aujourd'hui"
+        />
       </div>
       <div className="createPost-row">
         <div>Image</div>
-        <input type="img" onChange={handleChangeImg} value={postImg} />
+        <input
+          type="text"
+          onChange={handleChangeImg}
+          value={postImg}
+          placeholder="url photo"
+        />
       </div>
       {postText !== "" ? (
         <div className="createPost-row">
-          <button onClick={createPostHandler}>Publie</button>
+          <button className="btn" onClick={createPostHandler}>
+            Publie
+          </button>
         </div>
       ) : (
         ""
